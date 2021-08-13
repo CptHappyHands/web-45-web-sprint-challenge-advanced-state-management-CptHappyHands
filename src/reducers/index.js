@@ -1,10 +1,13 @@
-import { FETCH_FAIL, FETCH_START, FETCH_SUCCESS } from "../actions";
+import { ADD_SMURF, FETCH_FAIL, FETCH_START, FETCH_SUCCESS } from "../actions";
 
 export const initialState = {
-  smurfArray: [],
+  smurf: [],
   isLoading: false,
   error: "",
-  name: ",",
+  name: "",
+  nickname: "",
+  position: "",
+  description: "",
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,16 +19,22 @@ export const reducer = (state = initialState, action) => {
         isLoading: false,
       };
     case FETCH_SUCCESS:
-      const newSmurf = { ...action.payload, id: Date.now() };
       return {
         ...state,
-        smurfArray: [...state, newSmurf],
+        isLoading: false,
+        smurf: action.payload,
       };
     case FETCH_START:
       return {
         ...state,
         isLoading: true,
         error: "",
+      };
+    case ADD_SMURF:
+      // const newSmurf = { ...action.payload, id: Date.now() };
+      return {
+        ...state,
+        smurf: [...state.smurf, action.payload],
       };
     default:
       return state;

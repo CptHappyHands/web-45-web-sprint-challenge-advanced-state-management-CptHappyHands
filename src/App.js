@@ -8,6 +8,8 @@ import axios from "axios";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { connect } from "react-redux";
+import { fetchSmurfs } from "./actions";
 
 // class App extends Component {
 //   componentDidMount() {
@@ -31,7 +33,7 @@ const App = () => {
 };
 // }
 
-export default App;
+export default connect(null, { fetchSmurfs })(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.

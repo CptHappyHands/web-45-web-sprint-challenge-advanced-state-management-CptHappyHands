@@ -7,7 +7,7 @@ export const fetchSmurfs = () => {
       .get("http://localhost:3333/smurfs")
       .then((res) => {
         console.log(res.data);
-        dispatch(fetchSuccess(res.data.results));
+        dispatch(fetchSuccess(res.data));
       })
       .catch((err) => {
         dispatch(fetchFail(err));
@@ -31,8 +31,8 @@ export const fetchFail = (error) => {
 };
 
 export const ADD_SMURF = "ADD_SMURF";
-export const addSmurf = (name) => {
-  return { type: ADD_SMURF, payload: name };
+export const addSmurf = (newSmurf) => {
+  return { type: ADD_SMURF, payload: newSmurf };
 };
 
 //Task List:
